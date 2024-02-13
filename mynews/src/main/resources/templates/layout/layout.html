@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html th:lang="ja"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/layout/layout.css}">
+     <link rel="stylesheet" th:href="@{/css/fragments/header.css}"> <!-- 追加 -->
+    <title>ニュースアプリ</title>
+</head>
+<body>
+<!-- ヘッダー -->
+     <th:block th:replace="fragments/header::header"></th:block> <!-- ←　<header> ～ </header> を置き換える -->
+    <!-- ヘッダー終わり -->
+    <!-- メイン -->
+    <th:block layout:fragment="contents"></th:block>
+    <!-- </th:block>thymeleaf専用のタグ、thymeleaf の処理（th:ifやなど）を書ける -->
+    <!-- メイン終わり -->
+</body>
+</html>

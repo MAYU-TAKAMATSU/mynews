@@ -1,0 +1,24 @@
+<!-- ヘッダー共通部品として扱う -->
+<!DOCTYPE html>
+<html th:lang="ja"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header th:fragement="header">
+    <!-- th:fragmentはthymeleafの標準機能、共通部品を扱うためのもの -->
+        <h1 class="header-title">
+            <a href="#">ニュースアプリ</a>
+        </h1>
+        <nav>
+            <ul class="header-ul">
+                <li class="header-list"><a>ユーザ名</a></li>
+                <li class="header-list">
+                    <a href="/logout">ログアウト</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
