@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/* プロフィール新規作成 */
+.form-ul {
+  margin: 50px auto;
+  padding-left: 0;
+}
+
+.form-body {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 1.4rem;
+  margin-bottom: 50px;
+}
+.box {
+  width: 500px;
+  justify-content: initial;
+  
+}
+
+
+.form-ul > li:not(:first-child) {
+  margin-top: 20px;
+}
+
+.title {
+  margin: 0;
+}
+
+.error_msg {
+  color: tomato;
+}
+
+.input-area {
+  width: 500px;
+  height: 50px;
+  padding: 5px 10px;
+  font-size: 1.4rem;
+  border-radius: 10px;
+}
+
+.btn-area {
+  margin: 25px 15px 30px 0;
+}
+.btn {
+  background-color: #398ed3;
+  width: 100px;
+  height: 40px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.textarea {
+  resize: none;
+  width: 500px;
+  height: 300px;
+}
+
+.return_btn-area {
+  text-align: center;
+}
+.return_btn {
+  background-color: gray;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
