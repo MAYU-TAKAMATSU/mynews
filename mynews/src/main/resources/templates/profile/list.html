@@ -33,7 +33,7 @@
 						<p class="td-name" th:text="${#strings.length(profile.name) <= 7} ? ${profile.name} : |${#strings.substring(profile.name,0,7)}...|"></p>
 					</td>
 					<td>
-						<p class="td-gender" th:text="${#strings.length(profile.gender) <= 2} ? ${profile.gender} : |${#strings.substring(profile.gender,0,2)}...|"></p>
+						<p class="td-gender"th:text="${#strings.length(profile.gender) <= 2} ? ${profile.gender} : |${#strings.substring(profile.gender,0,2)}...|"></p>
 					</td>
 					<td>
 						<p class="td-hobby" th:text="${#strings.length(profile.hobby) <= 20} ? ${profile.hobby} : |${#strings.substring(profile.hobby,0,20)}...|"></p>
