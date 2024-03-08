@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/news/list.css}" rel="stylesheet">
+</head>
+<body>
+    <main layout:fragment="contents">
+        <div class="wrapper">
+            <h1>ニュース一覧</h1>
+            <div class="top-area">
+                <button class="btn" th:onclick="location.href='/news/create'">新規作成</button>
+                <form th:action="@{/news/list}" method="get" class="search">
+                    タイトル
+                    <input type="text" name="title" th:value="${title}" class="input-search">
+                    <button class="search-btn">検索</button>
+                </form>
+            </div>
+            <table border="1">
+                <tr>
+                    <th>No</th>
+                    <th>タイトル</th>
+                    <th>本文</th>
+                    <th>操作</th>
+                </tr>
+                <tr th:each="news, status : ${newsList}" > <!-- 指定したListオブジェクトの個数分繰り返す -->
+                    <td>[[${status.count}]]</td>
+                    <td>
+                        <p class="td-title" th:text="${#strings.length(news.title) <= 7} ? ${news.title} : |${#strings.substring(news.title, 0, 7)}...|"></p>
+                    </td>
+                    <td>
+                        <p class="td-contents" th:text="${#strings.length(news.content) <= 40} ? ${news.content} : |${#strings.substring(news.content, 0, 40)}...|"></p>
+                    </td>
+                   <!-- ※文字数を指定し以降は…で表示 th:text→我慢に指定した値を表示させる(四則演算や比較の演算子も使える) -->
+                    <td class="operation-box">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
