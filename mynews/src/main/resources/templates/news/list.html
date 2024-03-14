@@ -35,6 +35,20 @@
                     </td>
                    <!-- ※文字数を指定し以降は…で表示 th:text→我慢に指定した値を表示させる(四則演算や比較の演算子も使える) -->
                     <td class="operation-box">
+                    <!-- 2-5(編集)ここから -->
+                        <a th:href="@{/news/edit/__${news.id}__}" class="operation">編集</a>
+                        <!-- DBから取得したIDをもとに遷移先URKを指定 -->
+					<!-- 2-5(編集)ここまで -->
+					<!-- 2-5(削除)ここから -->
+                        <form method="post" name="delete" th:action="@{/news/delete}">
+                        <!-- 新たなformタグ追加(formタグでしかpost送信できない) -->
+                            <input type="hidden" name="id" th:value="${news.id}">
+                            <a onclick="this.parentNode.submit()" class="operation">削除</a>
+                            <!-- onclick="this.parentNode.submit()"：javascriptの構文、親要素(parentNode)であるformタグをsubmit(送信)するという意味がある
+                            formタグに記述されているURL(/news/delete)にpost送信される。
+							送信する際のリクエストパラメータは、inputタグのth:valueで指定(type="hidden"を指定しているため画面には表示されない)-->
+                        </form>
+					<!-- 2-5(削除)ここまで -->
                     </td>
                 </tr>
             </table>
