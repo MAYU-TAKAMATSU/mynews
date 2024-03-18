@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jutjoy.domain.entity.news.News;
+import com.jutjoy.domain.entity.news.NewsHistories;
 import com.jutjoy.domain.form.news.NewsEditForm;
+import com.jutjoy.domain.repository.NewsHistoriesRepository;
 import com.jutjoy.domain.repository.NewsRepository;
 
 import jakarta.transaction.Transactional;
@@ -24,10 +26,12 @@ public class NewsEditService { //2-5
 
 	@Autowired
 	private NewsRepository newsRepository;
+	@Autowired
+	private NewsHistoriesRepository newsHistoriesRepository;
 
 	private final String FILE_PATH = "/upload_file/news";
 
-	public void edit(int id, NewsEditForm form) {
+	public void edit(int id, NewsEditForm form) { //editメソッド
 
 		MultipartFile image = form.getImage();
 
@@ -36,6 +40,9 @@ public class NewsEditService { //2-5
 
 		// ニュース更新処理
 		News news = editNews(entity, form); //NewsEditメソッド(最下部にある)呼び出し更新処理
+		
+		//2-6追加、ニュース編集履歴登録(registerHistoryメソッドの呼出)
+		registerHistory(entity.getId());
 
 		try {
 
@@ -99,6 +106,14 @@ public class NewsEditService { //2-5
 			entity.setImageName(null);
 		}
 		return newsRepository.save(entity); //saveメソッド
+	}
+	
+	//2-6追加(ニュース更新処理時に、news_historiesテーブルに編集日時を登録する処理)
+	private void registerHistory(Integer id) { //registerHistoryメソッド
+	    NewsHistories entity = new NewsHistories();
+	    entity.setNewsId(id);
+	    newsHistoriesRepository.save(entity);
+	    //編集日時はNewsHistoriesクラスの@LastModifiedDataで生成されるTimestampで設定、よってニュースIdのみ設定
 	}
 
 }

@@ -56,6 +56,12 @@
             <div class="return_btn-area">
                 <a class="return_btn" th:href="@{/news/list}">一覧画面に戻る</a>
             </div>
+            <!-- 2-6追加 -->
+             <p class="history_text">編集履歴</p>
+            <ul class="history">
+                <li th:each="history : ${news.histories}" class="date" th:text="${#dates.format(history.editedDate, 'yyyy-MM-dd hh:mm:ss')}"></li>
+            </ul>
+            <!-- 2-6追加ここまで -->
         </div>
     </main>
 </body>

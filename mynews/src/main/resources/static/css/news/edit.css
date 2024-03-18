@@ -109,3 +109,12 @@ input.input-area_file {
 .u-margin_0 {
   margin: 0;
 }
+
+/* 2-6追加 */
+.history {
+  text-align: center;
+}
+
+.history_text {
+  font-size: 1.4rem;
+}

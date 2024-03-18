@@ -1,6 +1,7 @@
 package com.jutjoy.domain.entity.news;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -12,6 +13,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -42,4 +44,9 @@ public class News {
     @LastModifiedDate
     @Column(name = "updated_date")
     private Timestamp updatedDate;
+    
+    //2-6追加
+    @OneToMany(mappedBy = "news") //一対多を表すアノテーション、マップする対象フィールドをmappedByで指定
+    private List<NewsHistories> histories;
+    //型をList<NewsHistories>としているのは、複数のNewsHistoriesを取得する可能性があるから(一対多の関係)
 }
