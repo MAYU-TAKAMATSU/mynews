@@ -20,7 +20,7 @@ import lombok.Data;
 
 @Entity
 @DynamicUpdate
-@Table(name="profile_histories")
+@Table(name="profiles_histories")
 @Data
 @EntityListeners(AuditingEntityListener.class)
 public class ProfileHistories {

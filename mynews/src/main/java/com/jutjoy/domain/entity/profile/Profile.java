@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity /*エンティティクラス*/
-@Table(name = "profile")
+@Table(name = "profiles")
 @Data
 @EntityListeners(AuditingEntityListener.class)
 public class Profile {
